@@ -49,6 +49,7 @@ reset.addEventListener('click', function(){
     container.innerHTML = "";
     rainbowColor = false;
     userSize = prompt("Please enter grid size:  ")
+    rainbow.innerHTML = 'Rainbow-OFF';
     createGrid(userSize);
     hov();
 });
@@ -58,14 +59,17 @@ rainbow.addEventListener('click', function(){
     if(rainbowColor == false){
         rainbowColor = true;
         console.log('color == true');
+        rainbow.innerHTML = 'Rainbow-ON';
         hovColor();
     }else if (rainbowColor == true){
         rainbowColor = false;
         console.log('color == false')
+        rainbow.innerHTML = 'Rainbow-OFF';
         hov();
     }else{
         rainbowColor == false;
         console.log('color == false');
+        rainbow.innerHTML = 'Rainbow-OFF';
         hov();
     }
 })
