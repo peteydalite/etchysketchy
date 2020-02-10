@@ -1,35 +1,50 @@
-.container {
-    margin: 15px;
-    text-align: center;
+html, body{
+    margin: 0;
+    height: 100%;
 }
-/* .row0{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%
+
+.container{
+    /*background: lightblue;*/
+    display: grid;
+    width: 608px;
+    height: 608px;
+    margin: auto;
+    margin-top: 1%;
+    opacity: .9;
+  }
+.button-container{
+  display: flex;
+  width: 25%;
+  margin: auto;
 }
-.row1{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%
+.button-container > button{
+  padding: 2%;
+  margin: auto;
+  margin-top: 3%;
 }
-.row2{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%
+.default{
+  background: lightgray;
+  border: 1px solid black;
 }
-.row3{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%
-} */
-.column{
+.defaultHov{
+  background: orange;
+  border: 1px solid black;
+}
+  /* flex box code */
+ /* .column{
     display:flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
     border: 1px dashed gray;
 }
+.row{
+    display: flex;
+    background: lightgray;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+    border: 1px dashed;
+    overflow: hidden;
+  } */
