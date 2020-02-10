@@ -2,7 +2,17 @@ html, body{
     margin: 0;
     height: 100%;
 }
-
+.header-container{
+  display: grid;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+.header{
+  color: orange;
+  margin: auto;
+  font-size: 56px;
+}
 .container{
     background: rgb(236, 236, 236);
     border: 2px solid rgb(124, 124, 124);
