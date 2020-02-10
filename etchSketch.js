@@ -1,35 +1,68 @@
 const container = document.querySelector('.container');
+const defaultGrid = 16;
+var gridSize;
+var rainbowColor = false;
 
-function createGrid(){
-
-    //Outer for loop sets the row
-    for(i=0; i<16; i++){
-
-        //create new row with unique class name, css styling
-        const row = document.createElement('div');
-        row.classList.add(`row${i}`);
-        row.setAttribute('style', 'display:flex; flex-direction: row; flex-wrap: wrap; width: 100%');
-
-        //append that row into existing container class in html doc
-        container.appendChild(row);
-
-        //create temp variable to point to newly appended row
-        const tempRow = document.querySelector(`.row${i}`);
-    
-        //Inner for loop creates 2 divs; 1. generic column, 2. unique column with css styling
-        //appends unique column into generic one which then appends to temprow
-        for(k=0; k<16; k++){
-            const columnContainer = document.createElement('div');
-            columnContainer.classList.add('column');
-      
-            const column = document.createElement('div');
-            column.classList.add(`column${k}`);
-            column.setAttribute('style', 'height: 100px');
-
-            columnContainer.appendChild(column);
-            tempRow.appendChild(columnContainer);
+//Function to display grid
+let createGrid = function (){
+    gridSize = defaultGrid;
+    for(i=0; i<(gridSize * gridSize); i++){
+        const box = document.createElement('id');
+        box.classList.add('box');
+        box.classList.add('default')
+        var boxSize = (608 / gridSize) + "px";
+        //box.setAttribute('style', `width: ${boxSize}; height: ${boxSize};`);
+        box.style.width = `${boxSize}`;
+        box.style.height = `${boxSize}`;
+        container.appendChild(box);
     }
-                                      
-  }
+    container.setAttribute('style', `grid-template-columns: repeat(${gridSize}, 1fr);`);
 }
-createGrid();
+
+//Event listener for reset button to clear grid
+const reset = document.querySelector('#reset');
+const rainbow = document.querySelector('#color');
+
+reset.addEventListener('click', function(){
+    container.innerHTML = "";
+    rainbowColor = false;
+    createGrid();
+    hov();
+});
+rainbow.addEventListener('click', function(){
+    rainbowColor = true;
+    console.log('color == true');
+    hovColor();
+})
+//Event listener to change box colors
+let hov = function(){
+    boxHov = document.querySelectorAll('.box');
+    boxHov.forEach(item => {
+        if(rainbowColor == false){
+            item.addEventListener('mouseover', function(){
+                item.classList.add('defaultHov');
+            });
+        }
+    });
+};
+
+//Event listener to allow for multicolor background on box hover
+let hovColor = function(){
+    var boxes = document.querySelectorAll('.box');
+    boxes.forEach(boxColor => {
+        if(rainbowColor == true){
+            boxColor.addEventListener('mouseover',function(){
+                var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+                boxColor.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            })
+        };
+    });
+};
+//Initialize run
+let init = function(){
+    createGrid();
+    hov();
+};
+init();
